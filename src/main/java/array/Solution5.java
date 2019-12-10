@@ -7,7 +7,7 @@ package array;
  */
 public class Solution5 {
 
-    public static String longestPalindrome(String s) {
+    public String longestPalindrome(String s) {
         int length = s.length();
         boolean[][] p = new boolean[length][length];
         int maxLen = 0;
@@ -29,64 +29,65 @@ public class Solution5 {
         return maxPal;
     }
 
-    // Transform S into T.
-    // For example, S = "abba", T = "^#a#b#b#a#$".
-    // ^ and $ signs are sentinels appended to each end to avoid bounds checking
-    String preProcess(String s) {
-        int n = s.length();
-        if (n == 0) return "^$";
-
-        String ret = "^";
-        for (int i = 0; i < n; i++) {
-            ret += "#" + s.substring(i, i + 1);
-        }
-
-        ret += "#$";
-        return ret;
-    }
 
     // 马拉车算法
     public String longestPalindrome2(String s) {
-        String T = preProcess(s);
-        int n = T.length();
-        int[] P = new int[n];
-        int C = 0, R = 0;
-        for (int i = 1; i < n - 1; i++) {
-            int i_mirror = 2 * C - i;
-            if (R > i) {
-                P[i] = Math.min(R - i, P[i_mirror]);// 防止超出 R
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+
+        String tStr = processOriginal(s);
+        int maxLength = 0;
+        int center = 0;
+        int rightIndex = 0;
+        int startIndex = 0;
+        int length = tStr.length();
+        int[] p = new int[length];
+        p[0] = 0;
+        p[1] = 0;
+        for (int i = 1; i < length - 1; i++) {
+            if (rightIndex > i) {
+                int i_mirror = 2 * center - i;
+                p[i] = Math.min(p[i_mirror], rightIndex - i);
             } else {
-                P[i] = 0;// 等于 R 的情况
+                p[i] = 0;
             }
 
-            // 碰到之前讲的三种情况时候，需要利用中心扩展法
-            while (T.charAt(i + 1 + P[i]) == T.charAt(i - 1 - P[i])) {
-                P[i]++;
+            while (tStr.charAt(p[i] + 1 + i) == tStr.charAt(i - p[i] - 1)) {
+                p[i]++;
             }
 
-            // 判断是否需要更新 R
-            if (i + P[i] > R) {
-                C = i;
-                R = i + P[i];
+            if (p[i] + i > rightIndex) {
+                center = i;
+                rightIndex = p[i] + i;
             }
 
-        }
-
-        // 找出 P 的最大值
-        int maxLen = 0;
-        int centerIndex = 0;
-        for (int i = 1; i < n - 1; i++) {
-            if (P[i] > maxLen) {
-                maxLen = P[i];
-                centerIndex = i;
+            if (maxLength < p[i]) {
+                maxLength = p[i];
+                startIndex = (i - p[i]) / 2;
             }
         }
-        int start = (centerIndex - maxLen) / 2; //最开始讲的求原字符串下标
-        return s.substring(start, start + maxLen);
+
+        return s.substring(startIndex, startIndex + maxLength);
+    }
+
+    private String processOriginal(String s) {
+        if (s == null || s.length() == 0) {
+            return "$^";
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append('$');
+        for (int i = 0; i < s.length(); i++) {
+            stringBuilder.append('#').append(s.charAt(i));
+        }
+
+        stringBuilder.append('#').append('^');
+        return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
-        String abacdfgdcaba = longestPalindrome("cbbd");
+        Solution5 solution5 = new Solution5();
+        String abacdfgdcaba = solution5.longestPalindrome2("ecbebcf");
         System.out.println(abacdfgdcaba);
     }
 }
