@@ -17,14 +17,16 @@ public class ListNode {
     }
 
     public static ListNode generate() {
-        ListNode listNode11 = new ListNode(2);
-        ListNode listNode12 = new ListNode(4);
+        ListNode listNode11 = new ListNode(1);
+        ListNode listNode12 = new ListNode(2);
         ListNode listNode13 = new ListNode(3);
-        ListNode listNode14 = new ListNode(3);
+        ListNode listNode14 = new ListNode(4);
+        ListNode listNode15 = new ListNode(5);
 
-        listNode11.next = listNode12;
-        listNode12.next = listNode13;
-        listNode13.next = listNode14;
+//        listNode11.next = listNode12;
+//        listNode12.next = listNode13;
+//        listNode13.next = listNode14;
+//        listNode14.next = listNode15;
 
         return listNode11;
     }
