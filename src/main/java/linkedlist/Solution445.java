@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.List;
+
 /**
  * created at 2019/12/10
  *
@@ -68,27 +70,10 @@ public class Solution445 {
     }
 
     public static void main(String[] args) {
-        ListNode listNode11 = new ListNode(2);
-        ListNode listNode12 = new ListNode(4);
-        ListNode listNode13 = new ListNode(3);
-//        ListNode listNode14 = new ListNode(3);
-
-        ListNode listNode21 = new ListNode(5);
-        ListNode listNode22 = new ListNode(6);
-        ListNode listNode23 = new ListNode(4);
-
-        listNode11.next = listNode12;
-        listNode12.next = listNode13;
-//        listNode13.next = listNode14;
-//
-        listNode21.next = listNode22;
-        listNode22.next = listNode23;
+        List<ListNode> listNodes = ListNode.generate2();
 
         Solution445 solution445 = new Solution445();
-        ListNode listNode = solution445.addTwoNumbers(listNode11, listNode21);
-        while (listNode != null) {
-            System.out.print(listNode.val + ",");
-            listNode = listNode.next;
-        }
+        ListNode listNode = solution445.addTwoNumbers(listNodes.get(0), listNodes.get(1));
+        System.out.println(listNode);
     }
 }
