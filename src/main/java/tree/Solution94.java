@@ -52,7 +52,7 @@ public class Solution94 {
         Solution94 solution94 = new Solution94();
         Integer[] nums = new Integer[]{2, 1, 4, null, null ,3};
         TreeNode root = TreeNode.constructTree(nums);
-        TreeNode.show(root);
+        root.show();
         List<Integer> list = solution94.inorderTraversal2(root);
         System.out.println(list);
     }

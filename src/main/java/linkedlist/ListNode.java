@@ -32,21 +32,31 @@ public class ListNode {
     }
 
     public static List<ListNode> generate2() {
-        ListNode listNode11 = new ListNode(1);
-        ListNode listNode12 = new ListNode(8);
-        ListNode listNode13 = new ListNode(3);
-        ListNode listNode14 = new ListNode(3);
+        ListNode listNode11 = new ListNode(4);
+        ListNode listNode12 = new ListNode(1);
+        ListNode listNode13 = new ListNode(8);
+        ListNode listNode14 = new ListNode(4);
+        ListNode listNode15 = new ListNode(5);
 
-        ListNode listNode21 = new ListNode(9);
-        ListNode listNode22 = new ListNode(6);
-        ListNode listNode23 = new ListNode(4);
+        ListNode listNode21 = new ListNode(5);
+        ListNode listNode22 = new ListNode(0);
+        ListNode listNode23 = new ListNode(1);
+        ListNode listNode24 = new ListNode(8);
+        ListNode listNode25 = new ListNode(4);
+        ListNode listNode26 = new ListNode(5);
 
         listNode11.next = listNode12;
-//        listNode12.next = listNode13;
-//        listNode13.next = listNode14;
+        listNode12.next = listNode13;
+        listNode13.next = listNode14;
+        listNode14.next = listNode15;
 
-//        listNode21.next = listNode22;
-//        listNode22.next = listNode23;
+        listNode21.next = listNode22;
+        listNode22.next = listNode23;
+        listNode23.next = listNode24;
+        listNode24.next = listNode25;
+        listNode25.next = listNode26;
+
+
         return Arrays.asList(listNode11, listNode21);
     }
 

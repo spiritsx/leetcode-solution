@@ -38,14 +38,18 @@ public class TreeNode {
 //            }
             for (int i = startIndex; i < startIndex + lineNodeNum; i = i + 2) {
                 // 说明已经将nums中的数字用完，此时应停止遍历，并可以直接返回root
-                if (i == nums.length) return root;
+                if (i == nums.length) {
+                    return root;
+                }
                 cur = nodeQueue.poll();
                 if (nums[i] != null) {
                     cur.left = new TreeNode(nums[i]);
                     nodeQueue.offer(cur.left);
                 }
                 // 同上，说明已经将nums中的数字用完，此时应停止遍历，并可以直接返回root
-                if (i + 1 == nums.length) return root;
+                if (i + 1 == nums.length) {
+                    return root;
+                }
                 if (nums[i + 1] != null) {
                     cur.right = new TreeNode(nums[i + 1]);
                     nodeQueue.offer(cur.right);
@@ -59,10 +63,12 @@ public class TreeNode {
         return root;
     }
 
-    public static void show(TreeNode root) {
-        if (root == null) System.out.println("EMPTY!");
+    public void show() {
+        if (this == null) {
+            System.out.println("EMPTY!");
+        }
         // 得到树的深度
-        int treeDepth = getTreeDepth(root);
+        int treeDepth = getTreeDepth(this);
 
         // 最后一行的宽度为2的（n - 1）次方乘3，再加1
         // 作为整个二维数组的宽度
@@ -79,7 +85,7 @@ public class TreeNode {
 
         // 从根节点开始，递归处理整个树
         // res[0][(arrayWidth + 1)/ 2] = (char)(root.val + '0');
-        writeArray(root, 0, arrayWidth / 2, res, treeDepth);
+        writeArray(this, 0, arrayWidth / 2, res, treeDepth);
 
         // 此时，已经将所有需要显示的元素储存到了二维数组中，将其拼接并打印即可
         for (String[] line : res) {
@@ -102,14 +108,18 @@ public class TreeNode {
 
     private static void writeArray(TreeNode currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth) {
         // 保证输入的树不为空
-        if (currNode == null) return;
+        if (currNode == null) {
+            return;
+        }
         // 先将当前节点保存到二维数组中
         res[rowIndex][columnIndex] = String.valueOf(currNode.val);
 
         // 计算当前位于树的第几层
         int currLevel = ((rowIndex + 1) / 2);
         // 若到了最后一层，则返回
-        if (currLevel == treeDepth) return;
+        if (currLevel == treeDepth) {
+            return;
+        }
         // 计算当前行到下一行，每个元素之间的间隔（下一行的列索引与当前元素的列索引之间的间隔）
         int gap = treeDepth - currLevel - 1;
 
@@ -129,6 +139,6 @@ public class TreeNode {
     public static void main(String[] args) {
         Integer[] nums = new Integer[] {1,null,2,3};
         TreeNode treeNode = constructTree(nums);
-        show(treeNode);
+        treeNode.show();
     }
 }
