@@ -1,4 +1,4 @@
-package tree;
+package datastructure;
 
 /**
  * created at 2019/12/25

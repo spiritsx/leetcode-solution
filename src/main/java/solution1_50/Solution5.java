@@ -1,4 +1,4 @@
-package array;
+package solution1_50;
 
 /**
  * created at 2019/12/8

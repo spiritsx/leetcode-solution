@@ -1,4 +1,4 @@
-package array;
+package solution51_100;
 
 import java.util.Arrays;
 

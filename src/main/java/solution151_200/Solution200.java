@@ -1,4 +1,6 @@
-package tree;
+package solution151_200;
+
+import datastructure.UnionFind;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,4 +1,6 @@
-package tree;
+package solution101_150;
+
+import datastructure.Node;
 
 /**
  * created at 2019/12/15

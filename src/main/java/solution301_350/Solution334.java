@@ -1,6 +1,7 @@
-package array;
+package solution301_350;
 
 /**
+ * 334
  * created at 2019/12/9
  *
  * @author shixi

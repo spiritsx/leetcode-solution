@@ -1,4 +1,6 @@
-package linkedlist;
+package solution301_350;
+
+import datastructure.ListNode;
 
 /**
  * created at 2019/12/11

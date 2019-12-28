@@ -1,14 +1,14 @@
-package tree;
+package datastructure;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 

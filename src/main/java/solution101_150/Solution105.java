@@ -1,4 +1,6 @@
-package tree;
+package solution101_150;
+
+import datastructure.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,6 @@
-package linkedlist;
+package solution1_50;
+
+import datastructure.ListNode;
 
 import java.util.List;
 

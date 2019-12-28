@@ -1,4 +1,4 @@
-package linkedlist;
+package datastructure;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.List;
  * @author shixi
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 
