@@ -48,11 +48,25 @@ public class Solution162 {
         }
     }
 
+    public int findPeakElement3(int[] nums) {
+        int left = 0, right = nums.length - 1;
+        int middle = (right - left) / 2 + left;
+        while (left < right) {
+            if (nums[middle] > nums[middle + 1]) {
+                right = middle;
+            } else {
+                left  = middle + 1;
+            }
+            middle = (right - left) / 2 + left;
+        }
+        return middle;
+    }
+
     @Test
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 1, 3, 5, 6, 4};
         Solution162 solution162 = new Solution162();
-        int peakElement = solution162.findPeakElement2(nums);
+        int peakElement = solution162.findPeakElement3(nums);
         System.out.println(peakElement);
         assertEquals(peakElement, 1);
     }
