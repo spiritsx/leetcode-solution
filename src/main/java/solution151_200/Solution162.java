@@ -32,35 +32,20 @@ public class Solution162 {
     }
 
     public int findPeakElement2(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }
-        if (nums.length == 1 || nums[0] > nums[1]) {
-            return 0;
-        } else if (nums[nums.length - 1] > nums[nums.length - 2]) {
-            return nums.length - 1;
-        }
 
         return helper(nums, 0, nums.length - 1);
     }
 
     private int helper(int[] nums, int left, int right) {
-        if (right - left == 1) {
-            return -1;
+        if (right == left) {
+            return left;
         }
         int middle = (right - left) / 2 + left;
-        if (nums[middle] > nums[left] && nums[middle] > nums[right]) {
-            return middle;
+        if (nums[middle] > nums[middle + 1]) {
+            return helper(nums, left, middle);
+        } else {
+            return helper(nums, middle + 1, right);
         }
-        int leftPeek = helper(nums, left, middle + 1);
-        int rightPeek = helper(nums, middle - 1, right);
-        if (leftPeek != -1) {
-            return leftPeek;
-        }
-        if (rightPeek != -1) {
-            return rightPeek;
-        }
-        return -1;
     }
 
     @Test
