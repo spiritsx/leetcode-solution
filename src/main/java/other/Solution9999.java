@@ -13,9 +13,9 @@ public class Solution9999 {
     static class LetterThread extends Thread {
         @Override
         public void run() {
-            for (int i = 0; i < 26; i++) {
-                char c = (char) (i + 'a');
-                synchronized (lock) {
+            synchronized (lock) {
+                for (int i = 0; i < 26; i++) {
+                    char c = (char) (i + 'a');
                     System.out.print(c);
                     try {
                         lock.notify();
@@ -24,6 +24,7 @@ public class Solution9999 {
                         e.printStackTrace();
                     }
                 }
+                lock.notify();
             }
         }
     }
@@ -31,8 +32,8 @@ public class Solution9999 {
     static class DigitThread extends Thread {
         @Override
         public void run() {
-            for (int i = 1; i <= 26; i++) {
-                synchronized (lock) {
+            synchronized (lock) {
+                for (int i = 1; i <= 26; i++) {
                     System.out.print(i);
                     try {
                         lock.notify();
@@ -41,6 +42,7 @@ public class Solution9999 {
                         e.printStackTrace();
                     }
                 }
+                lock.notify();
             }
         }
     }
