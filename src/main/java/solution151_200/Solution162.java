@@ -1,7 +1,5 @@
 package solution151_200;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -55,14 +53,13 @@ public class Solution162 {
             if (nums[middle] > nums[middle + 1]) {
                 right = middle;
             } else {
-                left  = middle + 1;
+                left = middle + 1;
             }
             middle = (right - left) / 2 + left;
         }
         return middle;
     }
 
-    @Test
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 1, 3, 5, 6, 4};
         Solution162 solution162 = new Solution162();
